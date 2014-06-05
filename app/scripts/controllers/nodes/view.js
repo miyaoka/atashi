@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('atashiApp')
-  .controller('NodesViewCtrl', function ($scope, $routeParams, $location, Nodes, NodesChildren, TableFactory, Global, $sce) {
+  .controller('NodesViewCtrl', function ($scope, $routeParams, $location, Nodes, NodesChildren, TableFactory, Global) {
     $scope.node = TableFactory.sortable({
     });
     $scope.node.settings({
@@ -44,6 +44,8 @@ angular.module('atashiApp')
       //ログに追加
       Global.logs.push(res);
 
+      //ログを最下部にスクロール
+      document.getElementById('logs').scrollTop = document.getElementById('logs').scrollHeight;
 
       $scope.node.setItems([res]);
       if(res.parent){
@@ -57,7 +59,6 @@ angular.module('atashiApp')
         res.sort(function(){
           return (Math.round(Math.random())-0.5);
         });
-        document.getElementById('logs').scrollTop = document.getElementById('logs').scrollHeight;
         $scope.children.setItems(res);
       });
     });
