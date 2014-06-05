@@ -70,7 +70,7 @@ body {
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
     .container {
-        max-width: 730px;
+/*        max-width: 730px;*/
     }
 
     /* Remove the padding we set earlier */
@@ -88,4 +88,117 @@ body {
     .jumbotron {
         border-bottom: 0;
     }
+}
+
+
+/*
+    form
+*/
+.form-group
+{
+    margin-bottom: 5px;
+}
+.form-control
+{
+    padding: 4px 12px;
+}
+.form-horizontal .control-label,
+.form-horizontal .control-label-sub
+{
+    padding-top: 2px;
+}
+.form-horizontal .control-label-sub
+{
+    font-weight: normal;
+}
+form.search {
+    background-color: #FAFAFA;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+[ng-click],
+[data-ng-click],
+[x-ng-click] {
+    cursor: pointer;
+}
+
+
+.form-footer {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  margin-top: 10px;
+  border-top: 1px solid #ACACAC;
+
+  background: #e8e4dc; /* Old browsers */
+  background: -moz-linear-gradient(top,  #eeeeee 0%, #ffffff 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eeeeee), color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #eeeeee 0%,#ffffff 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #eeeeee 0%,#ffffff 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #eeeeee 0%,#ffffff 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #eeeeee 0%,#ffffff 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+
+}
+.form-footer a {
+    padding: 15px;
+    color: #666;
+}
+
+/*
+ログ表示*/
+.logs {
+    overflow-y: scroll;
+    height: 500px;
+    background-color: rgb(255, 235, 236);
+    color: rgb(51, 51, 51);
+    padding: 20px;
+    margin:20px;
+    font-size: 1.6rem;
+}
+.list{
+  border:3px solid #eee;
+  margin:0px;
+}
+.list h4 {
+    background-color: rgba(235, 235, 235, .5);
+    margin: 0px;
+    padding:12px 0px;
+}
+
+/**
+ * リストのページング部
+ */
+.table UL.pagination {
+    margin: 0px;
+}
+
+.table div.ng-table-counts{
+}
+.table div.ng-table-counts:after {
+    bottom:6px;
+    margin-left:6px;
+}
+.table td.ng-isolate-scope {
+    padding: 10px 0px;
+}
+/*
+ * 行ホバー時のハイライト
+ */
+.table.hover tbody tr:hover {
+    background-color: rgba(255, 235, 236, 0.9);
+    cursor: pointer;
+    font-size: 2.0rem;
+}
+.table tbody tr td{
+    padding: 8px 8px;
+}
+.table.children tbody tr td{
+    padding: 10px 8px;
+}
+/*
+子ノードのクリック領域*/
+.children tbody {
+    background-color: rgba(255, 235, 236, .25);
+    border: 4px solid rgba(255, 90, 90, 0.25);
 }
