@@ -1,0 +1,61 @@
+<h3>あたし一覧</h3>
+
+<hr>
+
+<div class="row">
+  <div class="col-sm-6">
+
+    <form class="form-horizontal search" role="form" ng-submit="search()">
+      <div class="form-group">
+        <label for="" class="col-sm-2 control-label">言葉</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" data-ng-model="params.content">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">改行数</label>
+        <div class="col-sm-10">
+          <input type="number" class="form-control" min="0" data-ng-model="params.br">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">掲載頁</label>
+        <div class="col-sm-10">
+          <input type="number" class="form-control" min="0" data-ng-model="params.page">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">頁内ID</label>
+        <div class="col-sm-10">
+          <input type="number" class="form-control" min="0" data-ng-model="params.index">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10 form-footer">
+          <button type="submit" class="btn btn-success">
+            <i class="glyphicon glyphicon-search"></i> 検索</button>
+          <a data-ng-click="reset()">リセット</a>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="col-sm-6">
+
+    <p>全 {{tp.total()}}件</p>
+    <table ng-table="tp" class="table hover">
+      <tr ng-repeat="item in $data" ng-click="view(item)">
+        <td data-title="'言葉'" sortable="'content'">{{item.content}}</td>
+        <td data-title="'改行数'" sortable="'br'">{{item.br}}</td>
+        <td data-title="'掲載頁'" sortable="'page'"><a ng-href="{{global.novelURL + item.page}}" target="_blank"><span class="glyphicon glyphicon-book"></span> {{item.page}}</a></td>
+        <td data-title="'頁内ID'" sortable="'index'">{{item.index}}</td>
+        <!--
+        <td data-title="'id'" sortable="'_id'">{{item._id}}</td>
+        <td data-title="'parent'" sortable="'parent'">{{item.parent}}</td>
+        <td data-title="'random'" sortable="'random'">{{item.random}}</td>
+        -->
+      </tr>
+    </table>
+
+  </div>
+</div>

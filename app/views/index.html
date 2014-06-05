@@ -13,19 +13,24 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(app) styles/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/ng-table/ng-table.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,app}) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="atashiApp">
+  <body ng-app="atashiApp" ng-controller="InitCtrl">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="container" ng-view=""></div>
+    <div class="container">
+      <div ng-include="'partials/navbar'"></div>
+        <div ng-view=""></div>
+    </div>
+
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
@@ -34,7 +39,7 @@
        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-       ga('create', 'UA-XXXXX-X');
+       ga('create', 'UA-3536169-8', 'atashi.herokuapp.com');
        ga('send', 'pageview');
     </script>
 
@@ -51,13 +56,22 @@
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/ng-table/ng-table.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/navbar.js"></script>
+        <script src="scripts/services/nodes.js"></script>
+        <script src="scripts/services/tablefactory.js"></script>
+        <script src="scripts/controllers/nodes/view.js"></script>
+        <script src="scripts/controllers/nodes/list.js"></script>
+        <script src="scripts/services/global.js"></script>
+        <script src="scripts/controllers/init.js"></script>
+        <script src="scripts/controllers/nodes/random.js"></script>
+        <script src="scripts/controllers/nodes/first.js"></script>
+        <script src="scripts/controllers/nodes/last.js"></script>
         <!-- endbuild -->
 </body>
 </html>

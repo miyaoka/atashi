@@ -1,0 +1,69 @@
+<div class="row">
+
+  <div class="col-sm-6 text-center">
+    <h3>あたしログ</h3>
+    <hr>
+
+    <div class="logs" id="logs">
+      <div ng-repeat="log in global.logs track by $index">
+        {{log.content}}
+        <br ng-repeat="br in log.brs track by $index" />
+      </div>
+    </div>
+    <a class="btn btn-default" data-ng-click="clearLog()">クリア</a>
+
+  </div>
+
+  <div class="col-sm-6 text-center">
+
+<h3>あたしノード <small>好きな子ノードをクリックしてお話を作りましょう</small></h3>
+<hr>
+
+<div class="list children">
+  <h4>子ノードリスト<span class="badge">{{children.total()}}</span></h4>
+  <table ng-table="children" class="table hover">
+    <tr ng-repeat="item in $data" ng-click="view(item)">
+      <td data-title="'言葉'" sortable="'content'">{{item.content}}</td>
+      <td data-title="'改行数'" sortable="'br'">{{item.br}}</td>
+      <td data-title="'掲載頁'" sortable="'page'"><a ng-href="{{global.novelURL + item.page}}" target="_blank"><span class="glyphicon glyphicon-book"></span> {{item.page}}</a></td>
+      <td data-title="'頁内ID'" sortable="'index'">{{item.index}}</td>
+    </tr>
+  </table>
+</div>
+
+<span class="glyphicon glyphicon-chevron-up"></span>
+
+<div class="list node">
+
+  <h4>現在のノード   </h4>
+  <table ng-table="node" class="table" template-pagination="">
+    <tr ng-repeat="item in $data">
+      <td data-title="'言葉'">{{item.content}}</td>
+      <td data-title="'改行数'">{{item.br}}</td>
+      <td data-title="'掲載頁'"><a ng-href="{{global.novelURL + item.page}}" target="_blank"><span class="glyphicon glyphicon-book"></span> {{item.page}}</a></td>
+      <td data-title="'頁内ID'">{{item.index}}</td>
+    </tr>
+  </table>
+</div>
+
+
+<span class="glyphicon glyphicon-chevron-up"></span>
+
+<div class="list parent">
+
+  <h4>親ノード</h4>
+  <table ng-table="parent" class="table hover" >
+    <tr ng-repeat="item in $data" ng-click="view(item, true)">
+      <td data-title="'言葉'" sortable="'content'">{{item.content}}</td>
+      <td data-title="'改行数'" sortable="'br'">{{item.br}}</td>
+      <td data-title="'掲載頁'" sortable="'page'"><a ng-href="{{global.novelURL + item.page}}" target="_blank"><span class="glyphicon glyphicon-book"></span> {{item.page}}</a></td>
+      <td data-title="'頁内ID'" sortable="'index'">{{item.index}}</td>
+    </tr>
+  </table>
+</div>
+
+  </div>
+
+
+
+</div>

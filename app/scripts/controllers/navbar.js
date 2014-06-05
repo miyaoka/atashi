@@ -2,12 +2,16 @@
 
 angular.module('atashiApp')
   .controller('NavbarCtrl', function ($scope, $location) {
-    $scope.menu = [{
-      'title': 'Home',
-      'link': '/'
-    }];
-    
-    $scope.isActive = function(route) {
-      return route === $location.path();
-    };
+    $scope.menus = [{
+      'title': '最初の言葉',
+      'link': '/nodes/first'
+    },{
+      'title': '最後の言葉',
+      'link': '/nodes/last'
+    }, {
+      'title': 'ランダム',
+      'link': '/nodes/random'
+    }
+    ];
+
   });
