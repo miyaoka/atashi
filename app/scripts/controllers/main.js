@@ -89,6 +89,9 @@ angular.module('atashiApp')
       RandomNodes.get(function(res){
         $scope.setNode(res);
       });
+    } else if(startID.length != 24){
+      //mongoDBのID長でなければリダイレクト
+      $location.path('/');
     } else{
       Nodes.get({
         nodeId: startID
