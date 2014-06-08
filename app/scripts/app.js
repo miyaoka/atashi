@@ -37,9 +37,15 @@ angular.module('atashiApp', [
         controller: 'NodesViewCtrl'
       })
 */
-      .when('/:startID?', {
+      .when('/', {
         templateUrl: 'partials/main',
         controller: 'MainCtrl'
+      })
+      .when('/about', {
+        templateUrl: 'partials/about'
+      })
+      .when('/release', {
+        templateUrl: 'partials/release'
       })
       .otherwise({
         redirectTo: '/'
