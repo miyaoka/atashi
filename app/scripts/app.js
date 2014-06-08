@@ -37,7 +37,7 @@ angular.module('atashiApp', [
         controller: 'NodesViewCtrl'
       })
 */
-      .when('/:startID?', {
+      .when('/', {
         templateUrl: 'partials/main',
         controller: 'MainCtrl'
       })

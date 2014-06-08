@@ -38,6 +38,16 @@
 <h3>あたしノード <small>好きな子ノードをクリックしてお話を作りましょう</small></h3>
 <hr>
 
+<div class="row text-left">
+  <div class="col-sm-6">
+    開始位置
+    <select class="form-control" ng-model="startNode" ng-options="item as item.title for item in indexes" ng-change="onSelectStartNode(startNode)">
+      <option value="">（一覧から選択）</option>
+    </select>
+  </div>
+</div>
+
+
 <div class="list children" ng-class="{loading: isChildLoading}">
   <h4>子ノードリスト<span class="badge">{{childrenTable.total()}}</span></h4>
   <table ng-table="childrenTable" class="table">
