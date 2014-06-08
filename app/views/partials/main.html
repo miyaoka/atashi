@@ -21,14 +21,13 @@
 <h3>あたしノード <small>好きな子ノードをクリックしてお話を作りましょう</small></h3>
 <hr>
 
-<div class="list children">
+<div class="list children" ng-class="{loading: isChildLoading}">
   <h4>子ノードリスト<span class="badge">{{childrenTable.total()}}</span></h4>
-  <table ng-table="childrenTable" class="table hover">
-    <tr ng-repeat="item in $data" ng-click="setNode(item)">
-      <td data-title="'言葉'" sortable="'content'" class="text-left">{{item.content}}</td>
-      <td data-title="'改行数'" sortable="'br'" width="80">{{item.br}}</td>
-      <td data-title="'掲載頁'" sortable="'page'" width="80"><a ng-href="{{global.novelURL + item.page}}" target="_blank"><span class="glyphicon glyphicon-book"></span> {{item.page}}</a></td>
-      <td data-title="'頁内ID'" sortable="'index'" width="80">{{item.index}}</td>
+  <table ng-table="childrenTable" class="table">
+    <tr ng-repeat="item in $data">
+      <td data-title="'言葉'" sortable="'content'" class="row-content" ng-click="setNode(item)">{{item.content}}</td>
+      <td data-title="'改行'" sortable="'br'" class="row-br">{{item.br}}</td>
+      <td data-title="'頁'" sortable="'page'" class="row-page"><a ng-href="{{global.novelURL + item.page}}" target="_blank">{{item.page}}/{{item.index}}</a></td>
     </tr>
   </table>
 </div>

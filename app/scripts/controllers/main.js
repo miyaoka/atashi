@@ -48,10 +48,14 @@ angular.module('atashiApp')
     };
 
     var getChildren = function(node){
+      $scope.isChildLoading = true;
+
       //子ノード
       NodesChildren.query({
         content: node.content
       }, function(res){
+
+        $scope.isChildLoading = false;
 
         //同じ語の繰り返しだと子に自身が含まれる場合があるので、自身以外のみにする
         var children = [];
