@@ -1,0 +1,46 @@
+<h1>あたしオートマトンナビゲーター<small>について</small></h1>
+
+<h2>概要</h2>
+
+<ul>
+  <li>一世を風靡したケータイ小説<a href="http://no-ichigo.jp/read/book/book_id/148920">あたし彼女</a>の全文を使い、続きを任意に選んでいくことで小説ができあがるというもの</li>
+  <li>「あたしオートマトン」という名前は<a href="http://neo.g.hatena.ne.jp/debedebe/20081218">http://neo.g.hatena.ne.jp/debedebe/20081218</a>から</li>
+</ul>
+
+<h2>経緯</h2>
+<h3>発端</h3>
+<blockquote class="twitter-tweet" lang="ja"><p>去年のログ漁ってんだけど、ローグライク難病少女が死ぬゲーム、マジでワンチャンあるんじゃねーかなー。難病ゲージをどうにか投薬とかで引き伸ばしつつラブイベントを詰め込んでいくの。スコアで出口調査での「感動しました！」度合いが変わって、あとケータイ小説風のログテキストが出力される。</p>&mdash; matakimika (@matakimika) <a href="https://twitter.com/matakimika/statuses/474203099318349824">2014, 6月 4</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<h3>なんとなく想像したもの</h3>
+
+<ul>
+  <li>画面左半分がローグライク、右半分に小説が同時に生成されていく</li>
+  <li>左画面でダンジョンを進んで行き、部屋に入ると出口がいくつかあり、それを選ぶことで小説の続きができる</li>
+  <li>選んだ部屋ごとにイベントが起き、HPがゼロになると死亡して完結する</li>
+</ul>
+
+<h3>とりあえず実装</h3>
+
+<ul>
+  <li>yo angular-fullstack</li>
+  <li>スクレイピング</li>
+  <li>MongoDBにぶっこむ</li>
+  <li>Angularでフロント作成</li>
+  <li>Herokuにデプロイ</li>
+  <li>できた</li>
+</ul>
+
+<blockquote class="twitter-tweet" lang="ja"><p><a href="http://t.co/dHB1m9zQat">http://t.co/dHB1m9zQat</a> （なつかしの）『あたし彼女』をどんどん紡いでいけるwebアプリをAngular-fullstackで作ってみた</p>&mdash; みやおか (@miyaoka) <a href="https://twitter.com/miyaoka/statuses/474367780330811392">2014, 6月 5</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<blockquote class="twitter-tweet" lang="ja"><p>ゆうべの頁作さんのローグライク難病少女ゲーム <a href="https://t.co/Nu18CxNrEl">https://t.co/Nu18CxNrEl</a> というのが響きだけで面白そうだったので、とりあえずケータイ小説でも題材にしてみるか→<a href="http://t.co/tNxbpemvja">http://t.co/tNxbpemvja</a> あたしオートマトン面白いなー、みたいな、感じの方向性</p>&mdash; みやおか (@miyaoka) <a href="https://twitter.com/miyaoka/statuses/474369326569369600">2014, 6月 5</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<h2>仕様</h2>
+
+<ul>
+  <li>本文の各行をノード化し、直前の行を親ノードとしている</li>
+  <li>選択したノードの文章で検索を行い、それらを親ノードとするノード一覧を子ノードとして表示し、ユーザーに選ばせていく</li>
+  <li>（原文でセンタリング目的の）行頭の全角空白は削除している</li>
+</ul>

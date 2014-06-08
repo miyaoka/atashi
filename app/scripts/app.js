@@ -41,6 +41,9 @@ angular.module('atashiApp', [
         templateUrl: 'partials/main',
         controller: 'MainCtrl'
       })
+      .when('/about', {
+        templateUrl: 'partials/about'
+      })
       .otherwise({
         redirectTo: '/'
       });
