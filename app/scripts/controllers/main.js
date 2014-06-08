@@ -41,6 +41,7 @@ angular.module('atashiApp')
     };
     $scope.clearLog = function(){
       Global.logs = [];
+      getRandom();
     };
 
     var setScroll = function(){
@@ -76,7 +77,11 @@ angular.module('atashiApp')
         $scope.childrenTable.setItems(children);
       });
     };
-
+    var getRandom = function(){
+      RandomNodes.get(function(res){
+        $scope.setNode(res);
+      });
+    };
     /*
       init
     */
@@ -86,9 +91,7 @@ angular.module('atashiApp')
     var startID = $routeParams.startID;
     if(!startID){
       //指定がなければランダム取得
-      RandomNodes.get(function(res){
-        $scope.setNode(res);
-      });
+      getRandom();
     } else if(startID.length != 24){
       //mongoDBのID長でなければリダイレクト
       $location.path('/');
