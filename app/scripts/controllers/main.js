@@ -82,9 +82,23 @@ angular.module('atashiApp')
     */
     Global.logs = [];
 
-    //ランダムで最初のノード取得
-    RandomNodes.get(function(res){
-      $scope.setNode(res);
-    });
+    //初期ノード取得
+    var startID = $routeParams.startID;
+    if(!startID){
+      //指定がなければランダム取得
+      RandomNodes.get(function(res){
+        $scope.setNode(res);
+      });
+    } else{
+      Nodes.get({
+        nodeId: startID
+      }, function(res){
+        $scope.setNode(res);
+      }, function(err){
+        //エラーなら指定ID無しにリダイレクト
+        $location.path('/');
+      });
+    }
+
 
   });
