@@ -16,20 +16,19 @@
         <button class="btn btn-primary" data-ng-click="setNode(currentNode.parentLink, true)" ng-disabled="!currentNode.parentLink">
           <span class="glyphicon glyphicon-backward"></span> ひとつ戻る
         </button>
-      </div>
-      <div class="form-group">
-        <a class="btn btn-success" ng-click="speekAll()" ng-disabled="!global.useSpeech"><span class="glyphicon glyphicon-volume-up"></span> 全文読み上げ</a>
-      </div>
-      <div class="checkbox">
-        <label>
-          <input type="checkbox" data-ng-model="global.useSpeech" ng-change="onChangeUseSpeech()">
-          読み上げを有効にする
-        </label>
+        <a class="btn btn-success" ng-show="!isSpeeking" ng-click="playSpeekAll()" ng-disabled="!global.useSpeech">
+          <span class="glyphicon glyphicon-play"></span>
+          全文読み上げ
+        </a>
+        <a class="btn btn-default" ng-show="isSpeeking" ng-click="stopSpeekAll()" ng-disabled="!global.useSpeech">
+          <span class="glyphicon glyphicon-stop"></span>
+          読み上げ停止
+        </a>
+    <a class="btn" data-ng-click="clearLog()">全文クリア</a>
       </div>
     </form>
 
     <br>
-    <a class="btn" data-ng-click="clearLog()">全文クリア</a>
 
   </div>
 
@@ -44,6 +43,14 @@
     <select class="form-control" ng-model="startNode" ng-options="item as item.title for item in indexes" ng-change="onSelectStartNode(startNode)">
       <option value="">（一覧から選択）</option>
     </select>
+  </div>
+  <div class="col-sm-6">
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" data-ng-model="global.useSpeech" ng-change="onChangeUseSpeech()">
+        <span class="glyphicon glyphicon-volume-up"></span> 読み上げを有効にする
+      </label>
+    </div>
   </div>
 </div>
 

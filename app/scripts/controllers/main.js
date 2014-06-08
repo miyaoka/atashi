@@ -78,9 +78,9 @@ angular.module('atashiApp')
       }
       window.speechSynthesis.speak(msg);
     };
-      if(!node || !Global.useSpeech){
     var speekList = function(index, cb){
       var node = Global.logs[index];
+      if(!node || !Global.useSpeech || !$scope.isSpeeking){
         cb();
         return;
       }
@@ -88,9 +88,15 @@ angular.module('atashiApp')
         speekList(++index, cb);
       });
     }
-    $scope.speekAll = function(){
-      speekList(angular.copy(Global.logs), function(){
+    $scope.playSpeekAll = function(){
+      $scope.isSpeeking = true;
+      speekList(0, function(){
+        $scope.isSpeeking = false;
       });
+    };
+    $scope.stopSpeekAll = function(){
+      speechSynthesis.cancel();
+      $scope.isSpeeking = false;
     };
     $scope.setNode = function(node, isParent){
       $scope.currentNode = node;
