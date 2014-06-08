@@ -78,14 +78,14 @@ angular.module('atashiApp')
       }
       window.speechSynthesis.speak(msg);
     };
-    var speekList = function(nodes, cb){
-      var node = nodes.shift();
       if(!node || !Global.useSpeech){
+    var speekList = function(index, cb){
+      var node = Global.logs[index];
         cb();
         return;
       }
       $scope.speek(node, function(){
-        speekList(nodes, cb);
+        speekList(++index, cb);
       });
     }
     $scope.speekAll = function(){
