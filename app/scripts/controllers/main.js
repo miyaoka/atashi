@@ -2,16 +2,6 @@
 
 angular.module('atashiApp')
   .controller('MainCtrl', function ($scope, $routeParams, $location, Nodes, RandomNodes, NodesChildren, TableFactory, Global, $timeout) {
-    $scope.currentTable = TableFactory.sortable({
-    });
-    $scope.currentTable.settings({
-      counts : []
-    });
-    $scope.parentTable = TableFactory.sortable({
-    });
-    $scope.parentTable.settings({
-      counts : []
-    });
     $scope.childrenTable = TableFactory.sortable({
       count : 10
     });
