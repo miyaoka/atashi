@@ -1,0 +1,39 @@
+<div class="row">
+
+  <div class="col-sm-6 text-center">
+    <h3>あたしログ</h3>
+    <hr>
+
+    <div class="logs" id="logs">
+      <div ng-repeat="log in global.logs track by $index">
+        {{log.content}}
+        <br ng-repeat="br in log.brs track by $index" />
+      </div>
+    </div>
+    <button class="btn btn-primary" data-ng-click="setNode(currentNode.parentLink, true)" ng-disabled="!currentNode.parentLink">
+      <span class="glyphicon glyphicon-backward"></span> ひとつ戻る</button>
+    <a class="btn" data-ng-click="clearLog()">全文クリア</a>
+
+  </div>
+
+  <div class="col-sm-6 text-center">
+
+<h3>あたしノード <small>好きな子ノードをクリックしてお話を作りましょう</small></h3>
+<hr>
+
+<div class="list children" ng-class="{loading: isChildLoading}">
+  <h4>子ノードリスト<span class="badge">{{childrenTable.total()}}</span></h4>
+  <table ng-table="childrenTable" class="table">
+    <tr ng-repeat="item in $data">
+      <td data-title="'言葉'" sortable="'content'" class="row-content" ng-click="setNode(item)">{{item.content}}</td>
+      <td data-title="'改行'" sortable="'br'" class="row-br">{{item.br}}</td>
+      <td data-title="'頁'" sortable="'page'" class="row-page"><a ng-href="{{global.novelURL + item.page}}" target="_blank">{{item.page}}/{{item.index}}</a></td>
+    </tr>
+  </table>
+</div>
+
+  </div>
+
+
+
+</div>

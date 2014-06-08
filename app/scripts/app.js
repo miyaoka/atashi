@@ -33,8 +33,12 @@ angular.module('atashiApp', [
         templateUrl: 'partials/nodes/view',
         controller: 'NodesViewCtrl'
       })
+      .when('/:startID?', {
+        templateUrl: 'partials/main',
+        controller: 'MainCtrl'
+      })
       .otherwise({
-        redirectTo: '/nodes/random'
+        redirectTo: '/'
       });
 
     $locationProvider.html5Mode(true);
