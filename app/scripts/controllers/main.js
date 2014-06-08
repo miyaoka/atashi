@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('atashiApp')
-  .controller('MainCtrl', function ($scope, $routeParams, $location, Nodes, RandomNodes, NodesChildren, TableFactory, Global) {
+  .controller('MainCtrl', function ($scope, $routeParams, $location, Nodes, RandomNodes, NodesChildren, TableFactory, Global, $timeout) {
     $scope.currentTable = TableFactory.sortable({
     });
     $scope.currentTable.settings({
@@ -18,8 +18,45 @@ angular.module('atashiApp')
     $scope.childrenTable.settings({
       counts : [10, 100, 1000, 10000]
     });
+
+    $scope.onChangeUseSpeech = function(){
+      speechSynthesis.cancel();
+    };
+    $scope.speek = function(node, cb){
+      speechSynthesis.cancel();
+      //「…」が「ドットドットドット」と読み上げられてしまうので削除する
+      var content = node.content.replace(/…/g, '')
+      var msg = new SpeechSynthesisUtterance(content);
+      msg.lang = "ja-JP";
+      msg.onend = function(e){
+        $timeout(function(){
+          if(cb){
+            cb();
+          }
+        }, (node.br - 1) * 100)
+      }
+      window.speechSynthesis.speak(msg);
+    };
+    var speekList = function(nodes, cb){
+      var node = nodes.shift();
+      if(!node || !Global.useSpeech){
+        cb();
+        return;
+      }
+      $scope.speek(node, function(){
+        speekList(nodes, cb);
+      });
+    }
+    $scope.speekAll = function(){
+      speekList(angular.copy(Global.logs), function(){
+      });
+    };
     $scope.setNode = function(node, isParent){
       $scope.currentNode = node;
+
+      if(Global.useSpeech){
+        $scope.speek(node);
+      }
 
       getChildren(node);
 

@@ -10,8 +10,25 @@
         <br ng-repeat="br in log.brs track by $index" />
       </div>
     </div>
-    <button class="btn btn-primary" data-ng-click="setNode(currentNode.parentLink, true)" ng-disabled="!currentNode.parentLink">
-      <span class="glyphicon glyphicon-backward"></span> ひとつ戻る</button>
+
+    <form class="form-inline" role="form">
+      <div class="form-group">
+        <button class="btn btn-primary" data-ng-click="setNode(currentNode.parentLink, true)" ng-disabled="!currentNode.parentLink">
+          <span class="glyphicon glyphicon-backward"></span> ひとつ戻る
+        </button>
+      </div>
+      <div class="form-group">
+        <a class="btn btn-success" ng-click="speekAll()" ng-disabled="!global.useSpeech"><span class="glyphicon glyphicon-volume-up"></span> 全文読み上げ</a>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" data-ng-model="global.useSpeech" ng-change="onChangeUseSpeech()">
+          読み上げを有効にする
+        </label>
+      </div>
+    </form>
+
+    <br>
     <a class="btn" data-ng-click="clearLog()">全文クリア</a>
 
   </div>
