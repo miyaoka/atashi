@@ -9,14 +9,17 @@ angular.module('atashiApp', [
 ])
   .config(function ($routeProvider, $locationProvider) {
     $routeProvider
+/*
       .when('/fetch', {
         templateUrl: 'partials/fetch',
         controller: 'FetchCtrl'
       })
+*/
       .when('/nodes/list', {
         templateUrl: 'partials/nodes/list',
         controller: 'NodesListCtrl'
       })
+/*
       .when('/nodes/random', {
         templateUrl: 'partials/nodes/random',
         controller: 'NodesRandomCtrl'
@@ -33,6 +36,7 @@ angular.module('atashiApp', [
         templateUrl: 'partials/nodes/view',
         controller: 'NodesViewCtrl'
       })
+*/
       .when('/:startID?', {
         templateUrl: 'partials/main',
         controller: 'MainCtrl'
