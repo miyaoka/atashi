@@ -44,6 +44,9 @@ angular.module('atashiApp', [
       .when('/about', {
         templateUrl: 'partials/about'
       })
+      .when('/release', {
+        templateUrl: 'partials/release'
+      })
       .otherwise({
         redirectTo: '/'
       });
